@@ -1,0 +1,17 @@
+{
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current",
+            "browsers": ["last 2 Chrome versions"]
+          },
+          "modules": "commonjs",
+          "loose": true
+        }
+      ],
+      "react"
+    ],
+    "plugins": ["transform-object-rest-spread"]
+  }
