@@ -1,5 +1,3 @@
-# react-leaflet-search
-React component for search lat lng on leaflet
+# react-leaflet-grouped-layer-control
 
-
-[DEMO](https://tumerorkun.github.io/react-leaflet-search)
+leaflet-groupedlayercontrol kind of functionality for react-leaflet
