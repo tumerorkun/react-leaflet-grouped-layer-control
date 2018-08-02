@@ -1,10 +1,13 @@
 import React from 'react'
 
 /**
- * baseLayers
- * checkhedBaseLayer
- * overlays
- * exclusiveGroups
+ * Props:
+ *  baseLayers
+ *  checkhedBaseLayer
+ *  overlays
+ *  exclusiveGroups
+ *  onBaseLayerChange
+ *  onOverlayChange
  */
 
 export default class RLGroupedLayerControlRC extends React.Component {
@@ -12,24 +15,15 @@ export default class RLGroupedLayerControlRC extends React.Component {
         super(props);
         this.fillStateWithProps = this.fillStateWithProps.bind(this);
         this.listItem = this.listItem.bind(this);
-        this.state = {
-            open: false,
-            checked:[]
-        }
+        this.state = { open: false }
         this.groups;
     }
-
 
     /**
      * Events
      */
-    mainDivMouseEnter(e) {
-        this.state.open || this.setState({ open: true });
-    }
-    mainDivMouseLeave(e) {
-        // console.log('LEAVE', e.currentTarget)
-        this.setState({open: false});
-    }
+    mainDivMouseEnter(e) { this.state.open || this.setState({ open: true }); }
+    mainDivMouseLeave(e) { this.setState({open: false}); }
     // Events End
 
     fillStateWithProps() {
@@ -51,10 +45,6 @@ export default class RLGroupedLayerControlRC extends React.Component {
             return a;
         }, { init: true });
         this.groupTitles = [ ...new Set(this.props.overlays.map(e => e.groupTitle)) ]
-    }
-
-    componentDidMount() {
-        // console.log('didMount')
     }
 
     groupContainer(groupTitle, groupElemans, key) {
@@ -79,7 +69,6 @@ export default class RLGroupedLayerControlRC extends React.Component {
     }
 
     overlayChanged(exclusive, event) {
-        // console.log(event.target.id, event.target.checked);
         const overlays = [...this.props.overlays];
         let newOverlays;
         if (exclusive === 'exclusive') {
@@ -124,12 +113,14 @@ export default class RLGroupedLayerControlRC extends React.Component {
         }
     }
 
+    baseLayerChange(event) {
+        if (this.props.onBaseLayerChange) {
+            this.props.onBaseLayerChange(event.target.id);
+        }
+    }
+
     render() {
         this.fillStateWithProps();
-        // console.log('state change with fillStateWithProps')
-        // console.log(this.groupTitles)
-        // console.log('rlglc rendered')
-
         const baseGroup = this.groupContainer(
             (<span key={`title-baselayer`} className={`rlglc-grouptitle`}>Base Layers</span>),
             (
@@ -138,7 +129,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
                         'baselayer',
                         e,
                         (e.name === this.props.checkedBaseLayer), 'radio',
-                        this.props.onBaseLayerChange
+                        this.baseLayerChange
                     )
                 )
             ), `baselayer`
