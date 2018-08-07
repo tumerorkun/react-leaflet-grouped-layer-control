@@ -31,8 +31,9 @@
 }
 
 .rlglc-active .rlglc-a {
-  background-position: 3px 3px;
-  background-size: 7px 7px;
+  /* background-position: 3px 3px;
+  background-size: 7px 7px; */
+  background-image: none;
   height: auto!important;
   width: auto!important;
   padding: 10px;
@@ -64,8 +65,8 @@
 }
 
 .rlglc-seperator {
-  margin: 5px 0;
-  width: 100%;
+  margin: 10px -10px;
+  width: calc(100%  + 20px);
   height: 1px;
   background-color: #eee;
 }

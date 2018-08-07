@@ -13,8 +13,9 @@ import React from 'react'
 export default class RLGroupedLayerControlRC extends React.Component {
     constructor(props) {
         super(props);
-        this.fillStateWithProps = this.fillStateWithProps.bind(this);
         this.listItem = this.listItem.bind(this);
+        this.reduceWithProps = this.reduceWithProps.bind(this);
+        this.baseLayerChange = this.baseLayerChange.bind(this);
         this.state = { open: false }
         this.groups;
     }
@@ -26,7 +27,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
     mainDivMouseLeave(e) { this.setState({open: false}); }
     // Events End
 
-    fillStateWithProps() {
+    reduceWithProps() {
         this.groups = this.props.overlays.reduce((a, b) => {
             if (typeof a[b.groupTitle] === 'undefined') {
                 a[b.groupTitle] = {
@@ -120,7 +121,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
     }
 
     render() {
-        this.fillStateWithProps();
+        this.reduceWithProps();
         const baseGroup = this.groupContainer(
             (<span key={`title-baselayer`} className={`rlglc-grouptitle`}>Base Layers</span>),
             (
@@ -158,21 +159,15 @@ export default class RLGroupedLayerControlRC extends React.Component {
 
         return (
             <div
-                className = {
-                    `rlglc${this.state.open ? ' rlglc-active' : ''}`
-                }
+                className = {`rlglc${this.state.open ? ' rlglc-active' : ''}`}
                 onMouseEnter={this.mainDivMouseEnter.bind(this)}
                 onMouseLeave={this.mainDivMouseLeave.bind(this)}
             >
                 <a className={`rlglc-a`}>
                     <div className={this.state.open ? 'rlglc-open' : 'rlglc-close'}>
-                        {
-                            baseGroup
-                        }
+                        { baseGroup }
                         <div className={`rlglc-seperator`}></div>
-                        {
-                            groups
-                        }
+                        { groups }
                     </div>
                 </a>
             </div>

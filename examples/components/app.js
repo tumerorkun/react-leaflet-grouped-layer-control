@@ -78,6 +78,10 @@ class App extends React.Component {
         title:"4.5G-Sites"
       }
     ]
+    this.tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    // this.baseLayerChange.bind(this)
+    this.overlayChange.bind(this)
+    this.maps = ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 'http://www.google.cn/maps/vt?lyrs=s@189&gl=tr&x={x}&y={y}&z={z}']
   }
 
   componentDidMount() {
@@ -92,8 +96,20 @@ class App extends React.Component {
     //   console.log('hebe')
     // }, 3000)
   }
+
+  baseLayerChange(baseTitle) {
+    if (baseTitle === this.checkedBaseLayer) {
+      return false;
+    }
+    console.warn(baseTitle)
+    this.tileLayerUrl = this.maps[this.baseLayers.map((e, i) => { return (e.name === baseTitle) ? String(i) : false }).filter(e => e)[0] | 0]
+    this.checkedBaseLayer = baseTitle;
+    this.forceUpdate();
+  }
+  overlayChange() {
+
+  }
   render() {
-    // console.log('app rendered', this.baseLayers)
 
     return (
       <div>
@@ -102,21 +118,14 @@ class App extends React.Component {
           checkedBaseLayer={this.checkedBaseLayer}
           exclusiveGroups={this.exclusiveGroups}
           overlays={this.overlays}
+          onBaseLayerChange={this.baseLayerChange.bind(this)}
+          onOverlayChange={this.overlayChange}
+          TileLayerUrl={this.tileLayerUrl}
         />
       </div>
     )
   }
 }
 
-// const App = () => (
-//   <div>
-//     <SimpleExample
-//       baseLayers={this.baseLayers}
-//       checkedBaseLayer={this.checkedBaseLayer}
-//       exclusiveGroups={this.exclusiveGroups}
-//       overlays={this.overlays}
-//     />
-//   </div>
-// )
 
 export default App

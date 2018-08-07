@@ -45,15 +45,15 @@ export default class SimpleExample extends Component {
           bounds={this.state.bounds}
           maxZoom={this.state.maxZoom}
           maxBounds={this.state.maxBounds}>
-        <TileLayer noWrap={true} url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <TileLayer noWrap={true} url={this.props.TileLayerUrl} />
         <ReactLeafletGroupedLayerControl
-          position="topright"
+          position="topleft"
           baseLayers={this.props.baseLayers}
           checkedBaseLayer={this.props.checkedBaseLayer}
           exclusiveGroups={this.props.exclusiveGroups}
           overlays={this.props.overlays}
-          onBaseLayerChange={() => { console.log('base Layer Changed') }}
-          onOverlayChange={(newOverlays) => { console.log('inSimpleComponent', newOverlays) }}
+          onBaseLayerChange={this.props.onBaseLayerChange}
+          onOverlayChange={this.props.onOverlayChange}
         />
       </Map>
     )
