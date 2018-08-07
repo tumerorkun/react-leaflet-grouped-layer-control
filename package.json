@@ -4,7 +4,7 @@
   "description": "leaflet-groupedlayercontrol kind of functionality for react-leaflet",
   "scripts": {
     "build": "rimraf dist && webpack",
-    "babel": "babel src --out-dir lib && cp src/react-leaflet-grouped-layer-control.css lib && v-up patch",
+    "babel": "babel src --out-dir lib && cp src/*.css lib && v-up patch",
     "examples": "webpack-serve ./examples/webpack.config.js",
     "npm:publish": "npm run babel && npm publish"
   },

@@ -28,8 +28,9 @@ export default class ReactLeafletGroupedLayerControl extends MapControl {
         this.renderReactComponent();
     }
 
-    componentDidUpdate(...a) {
-        super.componentDidUpdate(...a);
+    componentDidUpdate(prevProps, prevState, SS) {
+        super.componentDidUpdate(prevProps, prevState, SS);
+        // ReactDOM.unmountComponentAtNode(this.div);
         this.renderReactComponent();
     }
 

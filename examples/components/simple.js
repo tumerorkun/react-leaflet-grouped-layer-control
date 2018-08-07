@@ -32,10 +32,6 @@ export default class SimpleExample extends Component {
       ],
     }
   }
-  shouldComponentUpdate(...a) {
-    console.log('simple should', ...a)
-    return true
-  }
 
   render() {
     return (

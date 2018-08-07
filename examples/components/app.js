@@ -79,22 +79,20 @@ class App extends React.Component {
       }
     ]
     this.tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    // this.baseLayerChange.bind(this)
-    this.overlayChange.bind(this)
     this.maps = ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 'http://www.google.cn/maps/vt?lyrs=s@189&gl=tr&x={x}&y={y}&z={z}']
   }
 
   componentDidMount() {
-    // setTimeout(() => {
-    //   this.baseLayers = [
-    //     {
-    //       name: 'tile-texture-3',
-    //       title: 'denemeMap'
-    //     }
-    //   ]
-    //   this.setState({count:1})
-    //   console.log('hebe')
-    // }, 3000)
+    setTimeout(() => {
+      this.baseLayers = [
+        {
+          name: 'tile-texture-3',
+          title: 'denemeMap'
+        }
+      ]
+      this.setState({count:1})
+      console.log('hebe')
+    }, 3000)
   }
 
   baseLayerChange(baseTitle) {
@@ -106,8 +104,10 @@ class App extends React.Component {
     this.checkedBaseLayer = baseTitle;
     this.forceUpdate();
   }
-  overlayChange() {
-
+  overlayChange(newOverlays) {
+    console.log(newOverlays)
+    this.overlays = [...newOverlays];
+    this.forceUpdate();
   }
   render() {
 
@@ -119,7 +119,7 @@ class App extends React.Component {
           exclusiveGroups={this.exclusiveGroups}
           overlays={this.overlays}
           onBaseLayerChange={this.baseLayerChange.bind(this)}
-          onOverlayChange={this.overlayChange}
+          onOverlayChange={this.overlayChange.bind(this)}
           TileLayerUrl={this.tileLayerUrl}
         />
       </div>
