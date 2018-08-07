@@ -105,7 +105,6 @@ class App extends React.Component {
     this.forceUpdate();
   }
   overlayChange(newOverlays) {
-    console.log(newOverlays)
     this.overlays = [...newOverlays];
     this.forceUpdate();
   }
