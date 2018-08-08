@@ -79,7 +79,11 @@ class App extends React.Component {
       }
     ]
     this.tileLayerUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    this.maps = ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 'http://www.google.cn/maps/vt?lyrs=s@189&gl=tr&x={x}&y={y}&z={z}']
+    this.maps = [
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      'http://www.google.cn/maps/vt?lyrs=s@189&gl=tr&x={x}&y={y}&z={z}',
+      'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+    ];
   }
 
   componentDidMount() {
@@ -95,7 +99,7 @@ class App extends React.Component {
         },
         {
           name: 'tile-texture-3',
-          title: 'denemeMap'
+          title: 'Esri'
         }
       ]
       this.setState({count:1})

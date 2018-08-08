@@ -20,7 +20,12 @@ export interface RLGLCProps extends MapControlProps {
   overlays?: Array<overlay>;
   onBaseLayerChange?(id: string): void;
   onOverlayChange?(newOverlays: Array<overlay> ): void
-
+  leaflet?: {
+    map?: Map;
+    pane?: string;
+    layerContainer?: LayerContainer;
+    popupContainer?: Layer;
+  }
 }
 
 export class ReactLeafletGroupedLayerControl extends MapControl<RLGLCProps> {

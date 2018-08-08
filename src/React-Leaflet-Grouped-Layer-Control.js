@@ -6,9 +6,10 @@ import { MapControl } from 'react-leaflet';
 import RLGroupedLayerControlRC from './RL-Grouped-Layer-Control-RC';
 
 export default class ReactLeafletGroupedLayerControl extends MapControl {
-    constructor(props){
+    constructor(props, context){
         super(props);
         this.div = DomUtil.create('div', 'rlglc-wrap');
+        this.map = context.map || props.leaflet.map;
     }
 
     createLeafletElement(props) {
@@ -20,10 +21,11 @@ export default class ReactLeafletGroupedLayerControl extends MapControl {
     }
 
     renderReactComponent() {
-        ReactDOM.render(<RLGroupedLayerControlRC {...this.props} />, this.div);
+        ReactDOM.render(<RLGroupedLayerControlRC {...this.props} map={this.map}/>, this.div);
     }
 
     componentDidMount() {
+        console.log(this.props)
         super.componentDidMount();
         this.renderReactComponent();
     }

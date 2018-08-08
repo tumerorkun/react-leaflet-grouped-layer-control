@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Map, TileLayer} from 'react-leaflet'
+import {Map, TileLayer } from 'react-leaflet'
 import {
   ReactLeafletGroupedLayerControl
 } from '../../src';
@@ -10,7 +10,7 @@ export default class SimpleExample extends Component {
     super(props)
     this.state = {
       count:0,
-      maxZoom:13,
+      maxZoom:18,
       maxBounds:[[-90, -180], [90, 180]],
       bounds: [
         {
