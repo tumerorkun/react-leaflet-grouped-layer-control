@@ -86,6 +86,14 @@ class App extends React.Component {
     setTimeout(() => {
       this.baseLayers = [
         {
+          name: 'tile-texture-1',
+          title: 'OpenStreetMap'
+        },
+        {
+          name: 'tile-texture-2',
+          title: 'ThunderForest'
+        },
+        {
           name: 'tile-texture-3',
           title: 'denemeMap'
         }
@@ -96,13 +104,11 @@ class App extends React.Component {
   }
 
   baseLayerChange(baseTitle) {
-    if (baseTitle === this.checkedBaseLayer) {
-      return false;
-    }
+    if (baseTitle === this.checkedBaseLayer) { return false; }
     console.warn(baseTitle)
-    this.tileLayerUrl = this.maps[this.baseLayers.map((e, i) => { return (e.name === baseTitle) ? String(i) : false }).filter(e => e)[0] | 0]
+    this.tileLayerUrl = this.maps[this.baseLayers.map((e, i) => { return (e.name === baseTitle) ? String(i) : false }).filter(e => e)[0] | 0] || this.maps[0];
     this.checkedBaseLayer = baseTitle;
-    this.forceUpdate();
+    this.setState({count: ++this.state.count})
   }
   overlayChange(newOverlays) {
     this.overlays = [...newOverlays];

@@ -1,6 +1,5 @@
 import { Control, DomUtil } from 'leaflet';
-import { MapControl } from 'react-leaflet';
-import { ReactElement } from 'react'
+import { MapControl, MapControlProps } from 'react-leaflet';
 
 export interface baseLayer {
   name: string;
