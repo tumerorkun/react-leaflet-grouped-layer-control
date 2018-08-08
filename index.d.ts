@@ -33,4 +33,5 @@ export class ReactLeafletGroupedLayerControl extends MapControl<RLGLCProps> {
   public groups: Array<string>;
   public state: { open: boolean };
   public props: RLGLCProps;
+  public id: number;
 }

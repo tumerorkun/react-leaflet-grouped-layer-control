@@ -1,5 +1,5 @@
 .rlglc-wrap {
-  z-index: 900;
+  z-index: 801;
 }
 .rlglc{
   width: auto;
@@ -35,6 +35,7 @@
   background-size: 7px 7px; */
   background-image: none;
   height: auto!important;
+  overflow-y: auto;
   width: auto!important;
   padding: 10px;
   text-align: left;
