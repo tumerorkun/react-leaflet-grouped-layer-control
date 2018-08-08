@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-grouped-layer-control",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "leaflet-groupedlayercontrol kind of functionality for react-leaflet",
   "scripts": {
     "build": "rimraf dist && webpack",
