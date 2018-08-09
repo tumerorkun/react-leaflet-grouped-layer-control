@@ -37,7 +37,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
                 }
             }
             if (typeof a[b.groupTitle]['exclusive'] === 'undefined') {
-                if (this.props.exclusiveGroups.includes(b.groupTitle)) {
+                if (this.props.exclusiveGroups && this.props.exclusiveGroups.includes(b.groupTitle)) {
                     a[b.groupTitle]['exclusive'] = true;
                 } else {
                     a[b.groupTitle]['exclusive'] = false;
@@ -144,7 +144,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
         const groups = this.props.overlays ? this.groupTitles.reduce((a, b) => {
             const groupTitle = (<span key={`title-${b}`} className={`rlglc-grouptitle`}>{b}</span>)
             let groupElemans;
-            if (this.props.exclusiveGroups.includes(b)) {
+            if (this.props.exclusiveGroups && this.props.exclusiveGroups.includes(b)) {
                 // exclusives
                 groupElemans = this.groups[b].groupItems.map((e, i) => {
                     return this.listItem(b, e, e.checked, 'radio',
