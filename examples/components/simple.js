@@ -47,7 +47,7 @@ export default class SimpleExample extends Component {
           baseLayers={this.props.baseLayers}
           checkedBaseLayer={this.props.checkedBaseLayer}
           exclusiveGroups={this.props.exclusiveGroups}
-          overlays={this.props.overlays}
+          // overlays={this.props.overlays}
           onBaseLayerChange={this.props.onBaseLayerChange}
           onOverlayChange={this.props.onOverlayChange}
         />

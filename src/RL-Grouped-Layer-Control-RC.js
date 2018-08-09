@@ -29,7 +29,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
     // Events End
 
     reduceWithProps() {
-        this.groups = this.props.overlays.reduce((a, b) => {
+        this.groups = this.props.overlays && this.props.overlays.reduce((a, b) => {
             if (typeof a[b.groupTitle] === 'undefined') {
                 a[b.groupTitle] = {
                     exclusive: undefined,
@@ -46,7 +46,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
             a[b.groupTitle]['groupItems'].push(b);
             return a;
         }, { init: true });
-        this.groupTitles = [ ...new Set(this.props.overlays.map(e => e.groupTitle)) ]
+        this.groupTitles = this.props.overlays && [...new Set(this.props.overlays.map(e => e.groupTitle))]
     }
 
     groupContainer(groupTitle, groupElemans, key) {
@@ -141,7 +141,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
             ), `baselayer`
         );
 
-        const groups = this.groupTitles.reduce((a, b) => {
+        const groups = this.props.overlays ? this.groupTitles.reduce((a, b) => {
             const groupTitle = (<span key={`title-${b}`} className={`rlglc-grouptitle`}>{b}</span>)
             let groupElemans;
             if (this.props.exclusiveGroups.includes(b)) {
@@ -160,7 +160,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
                 });
             }
             return [...a, this.groupContainer(groupTitle, groupElemans, b)];
-        }, []);
+        }, []) : null;
 
         return (
             <div
@@ -171,8 +171,11 @@ export default class RLGroupedLayerControlRC extends React.Component {
             >
                 <a className={`rlglc-a`}>
                     <div className={this.state.open ? 'rlglc-open' : 'rlglc-close'}>
-                        { baseGroup }
-                        <div className={`rlglc-seperator`}></div>
+                        {baseGroup}
+                        {
+                            this.props.overlays ?
+                                <div className={`rlglc-seperator`}></div> : null
+                        }
                         { groups }
                     </div>
                 </a>
