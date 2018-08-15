@@ -1,10 +1,10 @@
 {
   "name": "react-leaflet-grouped-layer-control",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "leaflet-groupedlayercontrol kind of functionality for react-leaflet",
   "scripts": {
     "build": "rimraf dist && webpack",
-    "babel": "babel src --out-dir lib && cp src/*.css lib && v-up patch",
+    "babel": "babel src --out-dir lib && cp src/*.css lib",
     "examples": "webpack-serve ./examples/webpack.config.js",
     "npm:publish": "npm run babel && npm publish"
   },
@@ -27,12 +27,12 @@
   },
   "homepage": "https://github.com/tumerorkun/react-leaflet-grouped-layer-control#readme",
   "devDependencies": {
-    "@tumerorkun/v-up": "0.0.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
     "leaflet": "^1.3.3",
