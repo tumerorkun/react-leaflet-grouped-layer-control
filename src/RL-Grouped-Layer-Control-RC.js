@@ -46,7 +46,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
             a[b.groupTitle]['groupItems'].push(b);
             return a;
         }, { init: true });
-        this.groupTitles = this.props.overlays && [...new Set(this.props.overlays.map(e => e.groupTitle))]
+        this.groupTitles = this.props.overlays && Array.from(new Set(this.props.overlays.map(e => e.groupTitle)))
     }
 
     groupContainer(groupTitle, groupElemans, key) {
