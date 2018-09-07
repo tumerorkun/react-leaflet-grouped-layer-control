@@ -1,4 +1,5 @@
 import React from 'react'
+import ListItem from './ListItem'
 
 /**
  * Props:
@@ -60,13 +61,14 @@ export default class RLGroupedLayerControlRC extends React.Component {
 
     listItem(groupName, e, checked, type, onClick) {
         return (
-            <label htmlFor={`${e.name}-${this.id}`} key={`${e.name}-${this.id}`} className={`rlglc-option`}>
-                <input name={`${groupName}-${this.id}`} data-layername={e.name} id={`${e.name}-${this.id}`} className={`rlglc-input`} type={type}
-                    defaultChecked={checked}
-                    onClick={onClick || (() => {})}
-                />
-                <span className={`rlglc-title`}>{e.title}</span>
-            </label>
+            <ListItem
+                key={`${e.name}-${this.id}`}
+                groupName={groupName}
+                id={this.id}
+                e={e}
+                checked={checked}
+                type={type}
+                onClick={onClick} />
         )
     }
 
@@ -107,6 +109,7 @@ export default class RLGroupedLayerControlRC extends React.Component {
             this.props.onOverlayChange(newOverlays);
         }
     }
+    shouldComponentUpdate
 
     baseLayerChange(event) {
         if (this.props.onBaseLayerChange) {
@@ -122,6 +125,13 @@ export default class RLGroupedLayerControlRC extends React.Component {
     }
 
     componentDidMount() {
+        setInterval(() => {
+            if (this.state.open) {
+                this.setState({
+                    open: true
+                })
+            }
+        }, 1)
         this.setMaxHeight();
     }
 

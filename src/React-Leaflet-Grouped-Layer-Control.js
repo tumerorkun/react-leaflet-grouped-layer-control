@@ -9,6 +9,8 @@ export default class ReactLeafletGroupedLayerControl extends MapControl {
     constructor(props, context){
         super(props);
         this.div = DomUtil.create('div', 'rlglc-wrap');
+        L.DomEvent.disableClickPropagation(this.div);
+        L.DomEvent.disableScrollPropagation(this.div);
         this.map = context.map || props.leaflet.map;
     }
 

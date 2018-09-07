@@ -87,24 +87,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.baseLayers = [
-        {
-          name: 'tile-texture-1',
-          title: 'OpenStreetMap'
-        },
-        {
-          name: 'tile-texture-2',
-          title: 'ThunderForest'
-        },
-        {
-          name: 'tile-texture-3',
-          title: 'Esri'
-        }
-      ]
-      this.setState({count:1})
-      console.log('hebe')
-    }, 3000)
+    // setTimeout(() => {
+    //   this.baseLayers = [
+    //     {
+    //       name: 'tile-texture-1',
+    //       title: 'OpenStreetMap'
+    //     },
+    //     {
+    //       name: 'tile-texture-2',
+    //       title: 'ThunderForest'
+    //     },
+    //     {
+    //       name: 'tile-texture-3',
+    //       title: 'Esri'
+    //     }
+    //   ]
+    //   this.setState({count:1})
+    //   console.log('hebe')
+    // }, 3000)
   }
 
   baseLayerChange(baseTitle) {
@@ -116,7 +116,9 @@ class App extends React.Component {
   }
   overlayChange(newOverlays) {
     this.overlays = [...newOverlays];
-    this.forceUpdate();
+    this.setState({
+      count: ++this.state.count
+    })
   }
   render() {
 
